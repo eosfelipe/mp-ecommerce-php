@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const data = await response.json();
       console.log(data);
-      // createCheckoutButton({ id: 123456, description: "test" });
+      createCheckoutButton(data);
     } catch (error) {
       alert("Unexpected error");
       button.disabled = false;
@@ -41,6 +41,7 @@ const createCheckoutButton = ({ id }) => {
   script.src = url;
   script.type = "text/javascript";
   script.dataset.preferenceId = id;
+  script.dataset.buttonLabel = "Pagar la compra";
   const button = document.getElementById("btnCheckout");
   button.innerHTML = "";
   button.appendChild(script);
