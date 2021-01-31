@@ -5,7 +5,7 @@ $ACCESS_TOKEN = "APP_USR-1159009372558727-072921-8d0b9980c7494985a5abd19fbe921a3
 MercadoPago\SDK::setAccessToken($ACCESS_TOKEN);
 
 // $path = "http://localhost/mp-ecommerce-php/";
-$prd = "/";
+$prd = "https://eosfelipe-mp-commerce-php.herokuapp.com/";
 $urlNotification = $prd . "notification.php?source_news=webhooks";
 
 $json = file_get_contents("php://input");
