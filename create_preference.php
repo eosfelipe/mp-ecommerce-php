@@ -6,7 +6,7 @@ MercadoPago\SDK::setAccessToken($ACCESS_TOKEN);
 
 // $path = "http://localhost/mp-ecommerce-php/";
 $prd = "/";
-$urlNotification = $path . "notification.php?source_news=webhooks";
+$urlNotification = $prd . "notification.php?source_news=webhooks";
 
 $json = file_get_contents("php://input");
 $data = json_decode($json);
@@ -17,7 +17,7 @@ $item = new MercadoPago\Item();
 $item->id = $data->id;
 $item->title = $data->name;
 $item->description = $data->description;
-$item->picture_url = $path . $data->urlImg;
+$item->picture_url = $prd . $data->urlImg;
 $item->quantity = intval($data->quantity);
 $item->unit_price = floatval($data->price);
 $item->currency_id = "MXN";
@@ -49,9 +49,9 @@ $preference->payment_methods = array(
 
 
 $preference->back_urls = array(
-  "success" => $path . "feedback.php",
-  "failure" => $path . "feedback.php",
-  "pending" => $path . "feedback.php"
+  "success" => $prd . "feedback.php",
+  "failure" => $prd . "feedback.php",
+  "pending" => $prd . "feedback.php"
 );
 $preference->external_reference = $data->orderNumber;
 $preference->auto_return = "approved";
