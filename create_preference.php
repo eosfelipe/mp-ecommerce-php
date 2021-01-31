@@ -4,7 +4,9 @@ $ACCESS_TOKEN = "APP_USR-1159009372558727-072921-8d0b9980c7494985a5abd19fbe921a3
 //credentials
 MercadoPago\SDK::setAccessToken($ACCESS_TOKEN);
 
-$path = "http://localhost/mp-ecommerce-php/";
+// $path = "http://localhost/mp-ecommerce-php/";
+$prd = "/";
+$urlNotification = $path . "notification.php?source_news=webhooks";
 
 $json = file_get_contents("php://input");
 $data = json_decode($json);
@@ -35,10 +37,13 @@ $payer->address = array(
 );
 $preference->payer = $payer;
 
-
-
 $preference->payment_methods = array(
-  "excluded_payment_methods" => array("id" => "amex"),
+  "excluded_payment_methods" => array(
+    array("id" => "amex")
+  ),
+  "excluded_payment_types" => array(
+    array("id" => "atm")
+  ),
   "installments" => 6
 );
 
@@ -48,8 +53,9 @@ $preference->back_urls = array(
   "failure" => $path . "feedback.php",
   "pending" => $path . "feedback.php"
 );
-// $preference->auto_return = "approved";
 $preference->external_reference = $data->orderNumber;
+$preference->auto_return = "approved";
+$preference->notification_url = $urlNotification;
 $preference->save();
 
 $response = array(
