@@ -9,10 +9,12 @@ $data = json_decode($json);
 switch($data->type) {
   case "payment":
     //TODO lógica del negocio
-        // file_put_contents('notification.json', $json);
-        http_response_code(200);
-        $payment = MercadoPago\Payment.find_by_id($data->id);
-        var_dump($payment);
+    $payment = MercadoPago\Payment.find_by_id($data->id);
+    if($payment) {
+            file_put_contents('notification.json', $json);
+            error_log($json);
+            http_response_code(200);
+        }
         break;
     case "plan":
         $plan = MercadoPago\Plan.find_by_id($data->id);
@@ -24,5 +26,17 @@ switch($data->type) {
         $plan = MercadoPago\Invoice.find_by_id($data->id);
         break;
 }
+
+
+
+// $webhookContent = "";
+
+// $webhook = fopen('php://input' , 'rb');
+// while (!feof($webhook)) {
+//     $webhookContent .= fread($webhook, 4096);
+// }
+// fclose($webhook);
+
+// error_log($webhookContent);
 
 ?>

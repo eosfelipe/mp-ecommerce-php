@@ -55,7 +55,7 @@ $preference->back_urls = array(
 );
 $preference->external_reference = $data->orderNumber;
 $preference->auto_return = "approved";
-$preference->notification_url = $urlNotification;
+$preference->notification_url = "http://forksem.com/webhook/index.php?source_news=webhooks";
 $preference->save();
 
 $response = array(
