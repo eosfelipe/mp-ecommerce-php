@@ -93,7 +93,7 @@ parse_str(html_entity_decode($response), $out);
   <?php if($out['status'] === 'rejected') echo '<img src="assets/cancel.svg" alt="">' ?>
   <?php if($out['status'] === 'pending') echo '<img src="assets/pending.svg" alt="">' ?>
   </div>
-  <a href="/mp-ecommerce-php" class="btn">Regresar a la tienda</a>
+  <a href="https://eosfelipe-mp-commerce-php.herokuapp.com/" class="btn">Regresar a la tienda</a>
   </div>
 </body>
 </html>

@@ -34,15 +34,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const createCheckoutButton = ({ id }) => {
-  const url =
-    "https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js";
-  const script = document.createElement("script");
-  script.src = url;
-  script.type = "text/javascript";
-  script.dataset.preferenceId = id;
-  script.dataset.buttonLabel = "Pagar la compra";
+const createCheckoutButton = ({ id, init_point }) => {
+  // const url =
+  //   "https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js";
+  // const script = document.createElement("script");
+  // script.src = url;
+  // script.type = "text/javascript";
+  // script.dataset.preferenceId = id;
+  // script.dataset.buttonLabel = "Pagar la compra";
+  const link = document.createElement("a");
+  link.href = init_point;
   const button = document.getElementById("btnCheckout");
   button.innerHTML = "";
-  button.appendChild(script);
+  button.appendChild(link);
 };

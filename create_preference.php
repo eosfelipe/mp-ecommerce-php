@@ -1,8 +1,10 @@
 <?php
 require_once 'vendor/autoload.php';
 $ACCESS_TOKEN = "APP_USR-1159009372558727-072921-8d0b9980c7494985a5abd19fbe921a3d-617633181";
+$INTEGRATOR_ID = "dev_24c65fb163bf11ea96500242ac130004";
 //credentials
 MercadoPago\SDK::setAccessToken($ACCESS_TOKEN);
+MercadoPago\SDK::setIntegratorId($INTEGRATOR_ID);
 
 // $path = "http://localhost/mp-ecommerce-php/";
 $prd = "https://eosfelipe-mp-commerce-php.herokuapp.com/";
@@ -53,6 +55,7 @@ $preference->back_urls = array(
   "failure" => $prd . "feedback.php",
   "pending" => $prd . "feedback.php"
 );
+$preference->init_point = "https://www.mercadopago.com/mla/checkout/start?pref_id=";
 $preference->external_reference = $data->orderNumber;
 $preference->auto_return = "approved";
 $preference->notification_url = "http://forksem.com/webhook/index.php?source_news=webhooks";
@@ -60,6 +63,7 @@ $preference->save();
 
 $response = array(
   "id" => $preference->id,
+  "init_point" => $preference->init_point . $preference->id,
 );
 
 echo json_encode($response);

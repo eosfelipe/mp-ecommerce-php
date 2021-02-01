@@ -3,10 +3,15 @@
 // $ACCESS_TOKEN = "APP_USR-1159009372558727-072921-8d0b9980c7494985a5abd19fbe921a3d-617633181";
 // //credentials
 // MercadoPago\SDK::setAccessToken($ACCESS_TOKEN);
-$json = file_get_contents("php://input");
-$data = json_decode($json);
-file_put_contents('notification.json', $json);
-error_log($json);
+if($_SERVER['REQUEST_METHOD'] === "POST") {
+  $json = file_get_contents("php://input");
+  $data = json_decode($json);
+  http_response_code(200);
+  file_put_contents('notification.json', $json);
+  error_log($json);
+} else {
+  http_response_code(500);
+}
 
 // switch($data->type) {
 //   case "payment":
