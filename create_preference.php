@@ -4,7 +4,7 @@ $ACCESS_TOKEN = "APP_USR-1159009372558727-072921-8d0b9980c7494985a5abd19fbe921a3
 $INTEGRATOR_ID = "dev_24c65fb163bf11ea96500242ac130004";
 //credentials
 MercadoPago\SDK::setAccessToken($ACCESS_TOKEN);
-MercadoPago\SDK::setIntegratorId($INTEGRATOR_ID);
+// MercadoPago\SDK::setIntegratorId($INTEGRATOR_ID);
 
 // $path = "http://localhost/mp-ecommerce-php/";
 $prd = "https://eosfelipe-mp-commerce-php.herokuapp.com/";
