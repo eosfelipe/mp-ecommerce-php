@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const createCheckoutButton = ({ id, init_point }) => {
+const createCheckoutButton = ({ id }) => {
   // const url =
   //   "https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js";
   // const script = document.createElement("script");
@@ -43,7 +43,7 @@ const createCheckoutButton = ({ id, init_point }) => {
   // script.dataset.preferenceId = id;
   // script.dataset.buttonLabel = "Pagar la compra";
   const link = document.createElement("a");
-  link.href = init_point;
+  link.href = id;
   const button = document.getElementById("btnCheckout");
   button.innerHTML = "";
   button.appendChild(link);

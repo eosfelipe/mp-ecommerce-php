@@ -62,8 +62,7 @@ $preference->notification_url = "http://forksem.com/webhook/index.php?source_new
 $preference->save();
 
 $response = array(
-  "id" => $preference->id,
-  "init_point" => $preference->init_point . $preference->id,
+  "preference" => $preference,
 );
 
 echo json_encode($response);
